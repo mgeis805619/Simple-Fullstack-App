@@ -1,5 +1,5 @@
 div.post {
-    border: 1px solid black;
+    border: 1px solid white;
     width: 50%;
     margin: 10px auto;
 }
@@ -10,5 +10,28 @@ div.details {
 div.details div {
     display: inline;
     width: 30%;
-    border: 1px solid black;
+    border: 1px solid white;
+}
+h1 {
+    color:  blueviolet
+}
+
+body{
+    background-image: url("blackbgimg.jpg");
+}
+
+label{
+    color: white;
+}
+
+form #newPost {
+    margin-left: 5em;
+}
+
+button #cp{
+    margin-left: 10em;
+}
+
+button #hm{
+    margin-left: 10em;
 }
