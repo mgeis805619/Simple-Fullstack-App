@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>MyGameList</h1>
+    <button id="cp" onclick="postPage()">Create Post</button>    
+    <button id="hm" onclick="goHome()">Home</button>
+    <form id="login">
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username" />
+        <br />
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" />
+        <input type="submit" value="Login / Create Account" />
+    </form>
+    <section id="users">
+        <section id="followers">
+            <label for="follower">Followers: ${user.followers}</label>
+        </section>
+        <section id="following">
+            <label for="followed">Following: ${user.followed} </label>
+        </section>
+    </section>
+    <form id="createPost">
+        <textarea id="newPost"></textarea>
+        <input type="submit" value="Post" />
+    </form>
+    <section id="posts">
+        <p> 
+            Title: Yakuza<br/>
+            After the conclusion of the series' previous anthology with Yakuza 6, there were big Kiryu-sized shoes to fill. As our new protagonist Kasuga Ichiban steps into the spotlight for Yakuza: Like a Dragon, developer RGG Studio proves it can still capture its signature blend of gripping melodrama and absurdist humor while creating something genuinely fresh for the long-running franchise. The reinvention isn't just in the transition from action-brawler to turn-based combat, which is a great take on traditional RPG battles. It's that the party dynamic in Like a Dragon enables a new kind of storytelling that the series hasn't explored before, one that focuses on the power of embracing friendship and fighting together every step of the way.            
+        </p>
+        <form id="createPost">
+            <textarea id="newPost"></textarea>
+            <input type="submit" value="Comment" />
+        </form>
+        <button id="cp" onclick="like()">Like</button>
+        <p>
+            Title: PixelJunk Raiders<br/>
+            In an era when Hades can win IGN’s Game of The Year award for reinventing the roguelike wheel, and more straightforward games like Dead Cells remain fun after countless runs, PixelJunk Raiders is a major disappointment. Despite a distinct visual style reminiscent of trippy synthwave albums or Moebius paintings, PixelJunk Raiders (perhaps the final Google Stadia exclusive) fails to distinguish itself from the competition in any meaningful way. It does put forth some inventive ideas, but at the same time stumbles over the basics too much for them to matter.
+        </p>
+        <form id="createPost">
+            <textarea id="newPost"></textarea>
+            <input type="submit" value="Comment" />
+        </form>
+        <button id="cp" onclick="like()">Like</button>
+        <p>
+            Title: Persona 5 Strikers<br/>
+            When a Persona 5 spin-off made in-part by Dynasty Warriors developer Omega Force was announced, most folk assumed it would be a Persona-skinned, musou-style action game similar to the studio’s other licensed series like Hyrule Warriors or One Piece: Pirate Warriors. In reality, however, the simple but engaging real-time combat of Persona 5 Strikers is structured much closer to action-JRPGs like Kingdom Hearts, barely resembling a musou game at all – and what seemed like it could be a throwaway summer vacation romp actually delivers the story of a full-blown Persona 5 sequel nearly worthy of the ‘2' Atlus avoided putting at the end of its title.
+        </p>
+        <form id="createPost">
+            <textarea id="newPost"></textarea>
+            <input type="submit" value="Comment" />
+        </form>
+        <button id="cp" onclick="like()">Like</button>
+    </section>
+
+    
+
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+div.post {
+    border: 1px solid white;
+    width: 50%;
+    margin: 10px auto;
+}
+div.details {
+    background-color: darkgrey;
+    color: white;
+}
+div.details div {
+    display: inline;
+    width: 30%;
+    border: 1px solid white;
+}
+h1 {
+    color:  blueviolet
+}
+
+body{
+    background-image: url("blackbgimg.jpg");
+}
+
+p{
+    color: blueviolet;
+    border: 3px solid white;
+    vertical-align: middle;
+    padding: 30px;
+    margin: 200px;
+}
+
+label{
+    color: white;
+}
+
+form #newPost {
+    margin-left: 5em;
+}
+
+button #cp{
+    margin-left: 10em;
+}
+
+button #hm{
+    margin-left: 10em;
+}
