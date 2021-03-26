@@ -9,7 +9,6 @@ div.details {
 }
 div.details div {
     display: inline;
-    width: 30%;
     border: 1px solid white;
 }
 h1 {
@@ -26,6 +25,7 @@ p{
     vertical-align: middle;
     padding: 30px;
     margin: 200px;
+    background-color: rgba(128, 128, 128, 0.7);
 }
 
 label{
