@@ -14,6 +14,30 @@ app.get('/games', (req,res) => {
 })
 })
 
+app.get('/posts', (req,res) => {
+    const sql = "SELECT * FROM users;"
+    db.all(sql,[],(err, rows) => {
+        res.send(rows)
+})
+})
+
+app.post("/posts", (req,res)=> {
+    const post = req.body;
+    if (post.text.length >= 5) {
+        const sql = "INSERT INTO posts (content, user_id) VALUES (?,?);"
+        db.run(sql,[post.text,post.user_id])
+        res.send({
+            message: "Post successfully saved"
+        })
+    }
+    else {
+        res.status(401)
+        res.send({
+            message: "Post is not long enough."
+        })
+    }
+})
+
 app.get('/reviews', (req,res) => {
     const sql = "SELECT * FROM reviews;"
     db.all(sql,[],(err, rows) => {
@@ -22,22 +46,21 @@ app.get('/reviews', (req,res) => {
 })
 
 app.post("/reviews", (req,res)=> {
-    const post = req.body;
-    if (post.text.length >= 5) {
+    const review = req.body;
+    if (review.text.length >= 5) {
         const sql = "INSERT INTO reviews (review, user_id) VALUES (?,?);"
-        db.run(sql,[post.text,post.user_id])
+        db.run(sql,[review.text,review.user_id])
         res.send({
-            message: "Review successfully saved"
+            message: "review successfully saved"
         })
     }
     else {
         res.status(401)
         res.send({
-            message: "Review is not long enough."
+            message: "review is not long enough."
         })
     }
 })
-
 app.post("/login", (req, res) => {
     const user = req.body
     const sql2 = "SELECT id, first_name, last_name FROM users WHERE username = ? AND password = ?"

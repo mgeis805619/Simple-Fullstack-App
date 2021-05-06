@@ -1,31 +1,38 @@
-//2. User can create new post, send to server
-const $postsContainer = document.getElementById("posts")
-//1.1 js reference to the section element with id users
+function postPage() {
+    scene="postPage";
+}
+
+function goHome() {
+    scene = "homePage";
+}
+
+function reviewsPage() {
+    scene = "reviewsPage";
+}
+
+const $reviewsContainer = document.getElementById("reviews")
 const $usersContainer = document.getElementById("users")
 document.getElementById("login")
     .onsubmit = login
-//2.1 Set createPost function as onsubmit handler for the create post form 
-document.getElementById("createPost")
+document.getElementById("createReview")
     .onsubmit = createPost
 
 spawnPosts()
-//1.4 call function to spawn user elements
-spawnUsers()
-//2.2 Define function createPost to send post to server
+//spawnUsers()
 let user_id
 
 function createPost(e) {
     e.preventDefault()
     const payload = {
         body: JSON.stringify({
-            text: document.getElementById("newPost").value
+            text: document.getElementById("newReview").value
         }),
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         }
     }
-    fetch("/posts", payload)
+    fetch("/reviews", payload)
         .then(res => res.json())
         .then(res => console.log(res.body))
         .catch(error => console.error(error))
@@ -52,28 +59,24 @@ function login(e) {
 }
 
 function spawnPosts() {
-   //GET posts from server
-   fetch("/posts")
+   fetch("/reviews")
     .then(res => res.json())
     .then(posts => {
         const postsHTML = posts.map( post => `
-        <div class="post">
-            <p>${post.content}</p>
+        <div class="review">
+            <p>${post.review}</p>
             <div class="details">
-                <div>${post.userid}</div>
+                <div>${post.user_id}</div>
             </div>
         </div>
         ` ).join("")
-        $postsContainer.innerHTML = postsHTML
+        $reviewsContainer.innerHTML = postsHTML
     })
     .catch(err => console.error(err))
    
 }
 
-//1.2 define a function to spawn user elements
-//4.2 update spawnUsers to pull from server
 function spawnUsers() {
-    //GET posts from server
     fetch("/users")
      .then(res => res.json())
      .then(users => {
@@ -91,91 +94,3 @@ function spawnUsers() {
      .catch(err => console.error(err))
     
  }
-//1.3 each user element should be a div that shows user info
-//... and has a button that says Add Friend (doesn't work)
-
-//5. add Friend button works
-function addFriend(e) {
-    const $userDiv = e.target.parentElement
-    const friend_id = $userDiv.userid
-
-    const payload = {
-        body: JSON.stringify({
-            user_id: user_id,
-            friend_id: friend_id
-        }),
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }
-    fetch("/friends", payload)
-        .then(res => res.json())
-        .then(res => console.log(res.body))
-        .catch(error => console.error(error))
-}
-
-function loadData() {
-    return {
-        posts: [
-            {
-                text: "I got a new dog last night! It's so cute!",
-                user: "kimmy23",
-                datetime: new Date(),
-                numLikes: 3,
-                comments: []
-            },
-            {
-                text: "I got a new dog last night! It's so cute!",
-                user: "kimmy23",
-                datetime: new Date(),
-                numLikes: 3,
-                comments: []
-            },
-            {
-                text: "I got a new dog last night! It's so cute!",
-                user: "kimmy23",
-                datetime: new Date(),
-                numLikes: 3,
-                comments: []
-            },
-            {
-                text: "I got a new dog last night! It's so cute!",
-                user: "kimmy23",
-                datetime: new Date(),
-                numLikes: 3,
-                comments: []
-            }
-        ],
-        users: [
-            {
-                username: "kimmy23",
-                firstName: "Kimberly",
-                lastName: "Bash",
-                gender: "F",
-                age: 45
-            },
-            {
-                username: "wordup",
-                firstName: "John",
-                lastName: "Word",
-                gender: "M",
-                age: 31
-            },
-            {
-                username: "dogguy23",
-                firstName: "Rob",
-                lastName: "Obeneur",
-                gender: "M",
-                age: 62
-            },
-            {
-                username: "silentninja84",
-                firstName: "Lesa",
-                lastName: "Kirkland",
-                gender: "F",
-                age: 17
-            }
-        ]
-    }
-}
